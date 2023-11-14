@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OneSignal } from 'onesignal-ngx';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularPwaWithOneSignal';
+
+  constructor(private oneSignal: OneSignal) {
+    this.oneSignal.init({
+      appId: "your-app-id",
+      serviceWorkerParam: {
+        scope: '/onesignal'
+      },
+    });
+  }
 }
